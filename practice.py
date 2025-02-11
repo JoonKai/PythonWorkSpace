@@ -1147,3 +1147,244 @@ cabinet = {3:"유재석", 100:"조세호"}
 # # 게임 종료
 
 # game_over()
+
+###### Quiz
+
+# class House:
+#     def __init__(self, location, house_type, deal_type, price, completion_year):
+#         self.location = location
+#         self.house_type = house_type
+#         self.deal_type = deal_type
+#         self.price = price
+#         self.completion_year = completion_year
+
+# # 매물 정보 표시
+#     def show_detail(self):
+#         print(self.location, self.house_type, self.deal_type\
+#              ,self.price, self.completion_year)
+    
+
+# houses=[]
+# house1 = House("강남", "아파트", "매매", "10억", "2010년")
+# house2 = House("마포", "오피스텔", "전세", "5억", "2007년")
+# house3 = House("송파", "빌라", "월세", "500/50", "2000년")
+# houses.append(house1)
+# houses.append(house2)
+# houses.append(house3)
+
+# print("총 {0}대의 매물이 있습니다.".format(len(houses)))
+# for house in houses:
+#     house.show_detail()
+
+###### 28> 예외처리
+# 1. 기본사용법법
+# try:
+#     print("나누기 전용 계산기 입니다.")
+#     nums=[]
+#     nums.append(int(input("첫 번째 숫자를 입력하세요")))
+#     nums.append(int(input("두 번째 숫자를 입력하세요")))
+#     #nums.append(int(nums[0] /nums[1]))
+#     print("{0} /{1} = {2}".format(nums[0], nums[1], nums[2]))
+#     #print("{0} / {1} = {2}".format(num1, num2, int(num1/num2)))
+# except ValueError:
+#     print("에러 잘봇된 값을 입력하였습니다.")
+# except ZeroDivisionError as err:
+#     print(err)
+# except Exception as err:
+#     print("알 수 없는 에러가 발생했습니다.")
+#     print(err)
+
+# 2. 에러발생시키기기
+# try:
+#     print("한 자리 숫자 나누기 전용 계산기 입니다.")
+#     num1 = int(input("첫 번째 숫자를 입력하세요 : "))
+#     num2 = int(input("두 번째 숫자를 입력하세요 : "))
+#     if(num1>=10 or num2>=10):
+#         raise ValueError #위의 조건에 부합하면 except로 보내 버린다.
+#     print("{0} / {1} = {2}".format(num1, num2, int(num1/num2)))
+# except ValueError:
+#     print("잘못된 값을 입력하였습니다. 한 자리 숫자만 입력하세요")
+
+# 3. 사용자 정의 예외처리리
+# class BigNumberError(Exception):
+#     def __init__(self, msg):
+#         self.msg = msg
+#     def __str__(self):
+#         return self.msg
+
+# try:
+#     print("한 자리 숫자 나누기 전용 계산기 입니다.")
+#     num1 = int(input("첫 번째 숫자를 입력하세요 : "))
+#     num2 = int(input("두 번째 숫자를 입력하세요 : "))
+#     if(num1>=10 or num2>=10):
+#         raise BigNumberError("입력값 : {0}, {1}".format(num1, num2)) #위의 조건에 부합하면 except로 보내 버린다.
+#     print("{0} / {1} = {2}".format(num1, num2, int(num1/num2)))
+# except ValueError:
+#     print("잘못된 값을 입력하였습니다. 한 자리 숫자만 입력하세요")
+# except BigNumberError as err:
+#     print("에러가 발생하였습니다. 한 자리 숫자만 입력하세요")
+#     print(err)
+
+# 4. finally
+# class BigNumberError(Exception):
+#     def __init__(self, msg):
+#         self.msg = msg
+#     def __str__(self):
+#         return self.msg
+
+# try:
+#     print("한 자리 숫자 나누기 전용 계산기 입니다.")
+#     num1 = int(input("첫 번째 숫자를 입력하세요 : "))
+#     num2 = int(input("두 번째 숫자를 입력하세요 : "))
+#     if(num1>=10 or num2>=10):
+#         raise BigNumberError("입력값 : {0}, {1}".format(num1, num2)) #위의 조건에 부합하면 except로 보내 버린다.
+#     print("{0} / {1} = {2}".format(num1, num2, int(num1/num2)))
+# except ValueError:
+#     print("잘못된 값을 입력하였습니다. 한 자리 숫자만 입력하세요")
+# except BigNumberError as err:
+#     print("에러가 발생하였습니다. 한 자리 숫자만 입력하세요")
+#     print(err)
+# finally:
+#     print("계산기를 이용해 주셔서 감사합니다.")
+
+##### Quiz>
+# class SoldOutError(Exception):
+#     def __init__(self, msg):
+#         self.msg = msg
+#     def __str__(self):
+#         return self.msg
+    
+# chicken =10
+# waiting = 1
+
+# while(True):
+    
+#     try:
+#         print("[남은 치킨 : {0}]".format(chicken))
+#         order = int(input("치킨 몇 마리 주문 하시겠습니까?"))
+#         if order > chicken:
+#             print("재료가 부족합니다.")
+#         elif order <= 0:
+#             raise ValueError
+#         else:
+#             print("[대기번호{0}] {1} 마리 주문이 완료 되었습니다.".format(waiting, order))
+#         waiting +=1
+#         chicken -=order
+#         if chicken == 0:
+#             raise SoldOutError("재고가 소진 되어 더 이상 주문을 받지 않습니다.")
+#     except ValueError:
+#         print("잘못된 값을 입력하였습니다.")
+#     except SoldOutError as err:
+#         print(err)
+#         break
+
+
+##### 30> 모듈 ******
+# import theater_module
+# theater_module.price(3) #3명이서 영화 보러 갔을때 가격
+# theater_module.price_morning(4) #4명이서 조조 할인 영화 보러 갔을때 가격
+# theater_module.price_soldier(5) #5명의 군인이 영화 보러 갔을때 가격
+
+# import theater_module as mv #축약어 등록
+# mv.price(3)
+# mv.price_morning(4)
+# mv.price_soldier(5)
+
+# from theater_module import *
+# price(4)
+# price_morning(5)
+# price_soldier(3)
+
+# from theater_module import price, price_morning # 필요한 함수만 사용
+# price(5)
+# price_morning(5)
+# #price_soldier 안됨
+
+# from theater_module import price_soldier as price # 이것마져도 축약어 등록 가능하다
+# price(4)
+
+##### 31>패키지
+
+# import travel.thailand # 클래스는 불가하다.
+# trip_to = travel.thailand.ThailandPackage() 
+# trip_to.detail()
+# from travel.thailand import ThailandPackage
+# trip_to = ThailandPackage()
+# trip_to.detail()
+
+# from travel import vietnam
+# trip_to = vietnam.VietnamPackage()
+# trip_to.detail()
+
+# __all__
+# from travel import *
+# #trip_to = vietnam.VietnamPackage() #에러발생 ==visual studio cod linting 이 이제 적용 안되나봄 바로됨.
+# trip_to = thailand.ThailandPackage()
+# trip_to.detail()
+
+##### 32>패키지, 모듈위치
+# import inspect
+# import random
+# print(inspect.getfile(random)) # 모듈의 해당 위치를 알수 있음
+# print(inspect.getfile(thailand))
+
+##### 33>pip install
+# from bs4 import BeautifulSoup
+# soup = BeautifulSoup("<p>Some<b>bad<i>HTML")
+# print(soup.prettify())
+
+# pip list 현재 설치되어 있는 모든 패키지 확인 가능
+# pip show beautifulsoup4 설치한 패키지에대한 정보 확인 가능
+# pip install --upgrade beautifulsoup4 선택한 패키지 업그레이드 가능
+# pip uninstall beautifulsoup4 선택한 패키지 삭제 가능
+
+##### 34>내장 함수
+# input: 사용자 입력을 받는 함수
+# language = input("무슨 언어를 좋아하세요")
+# print("{0} 은 아주 좋은 언어입니다.".format(language))
+
+# dir: 어떤 객체를 넘겨줬을때 그 객체가 어떤 변수와 함수를 가지고 있는지 표시
+# import random # 외장 함수
+# print(dir())
+# import pickle
+# print(dir())
+
+# print(dir(random))
+
+# lst = [1, 2, 3]
+# print(dir(lst))
+
+# name = "jim"
+# print(dir(name))
+
+##### 35>외장 함수
+# glob : 경로 내의 폴더 / 파일 목록 조회 (윈도우 dir)
+# import glob
+# print(glob.glob("*.py"))
+
+# os : 운영체제에서 제공하는 기본 기능
+#import os
+# print(os.getcwd()) # 현제 디렉토리
+
+# folder = "sample_dir"
+
+# if os.path.exists(folder):
+#     print("이미 존재하는 폴더 입니다.")
+#     os.rmdir(folder)
+#     print(folder, "폴더를 삭제하였습니다.")
+# else:
+#     os.makedirs(folder) #폴더 생성
+#     print(folder, "폴더를 생성하였습니다.")
+
+# print(os.listdir())
+
+# import time
+# print(time.localtime())
+# print(time.strftime("%Y-%m-%d %H:%M:%S"))
+
+# import datetime
+# print("오늘 날짜는", datetime.date.today())
+
+# today = datetime.date.today()
+# td = datetime.timedelta(days = 100)
+# print("우리가 만난지 100일은 ", today +td)
